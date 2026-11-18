@@ -1,0 +1,62 @@
+:root {
+  --bg: #f7f8fa;
+  --teks: #1d2430;
+  --aksen: #1f5fbf;
+  --aksen-teks: #ffffff;
+  --garis: #d5dae2;
+  --error: #b3261e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: var(--teks);
+  background: var(--bg);
+}
+
+main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+h1 { font-size: 1.5rem; margin-top: 0; }
+
+button {
+  font: inherit;
+  padding: 0.6rem 1.1rem;
+  border: 0;
+  border-radius: 0.4rem;
+  background: var(--aksen);
+  color: var(--aksen-teks);
+  cursor: pointer;
+}
+
+button:hover { filter: brightness(1.1); }
+button:focus-visible { outline: 3px solid #f2b705; outline-offset: 2px; }
+button:disabled { opacity: 0.6; cursor: wait; }
+
+#pesan { min-height: 1.6em; margin: 1rem 0 0.5rem; }
+#pesan.error { color: var(--error); font-weight: 600; }
+
+#daftar {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#daftar li {
+  padding: 0.7rem 0.9rem;
+  margin-bottom: 0.5rem;
+  background: #fff;
+  border: 1px solid var(--garis);
+  border-radius: 0.4rem;
+  overflow-wrap: anywhere; /* judul panjang tidak merusak layout */
+}
+
+@media (min-width: 40rem) {
+  main { padding: 2.5rem 1.5rem; }
+}

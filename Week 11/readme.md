@@ -1,0 +1,17 @@
+^Sebelumnya saya memakai struktur folder dari sebelumnya tapi mengubahnya beberapa sesuai modul
+^Saya memakai AI untuk membuat CSS karna di modul sebenannya tak ada diminta css cuma saya menmbahinya supaya lebih enak interface nya dan juga di modul kulihat di sertakan struktur css meskipun tidak di berikan code css nya
+^Defer adalah atribut pada tag <script> yang membuat browser mengunduh script sambil terus membaca HTML, lalu menjalankannya setelah seluruh HTML selesai dibaca.
+
+##3. Fixture Stabil
+Saya membuat file data/kegiatan.json, menjalankan Live Server, lalu membuka http://127.0.0.1:5500/data/kegiatan.json langsung di browser. Isinya tampil sebagai array berisi dua kegiatan, yaitu HTML (kuota 20) dan CSS (kuota 0), dengan status 200 di tab Network. JSON-nya valid karena browser bisa menampilkannya tanpa error dan tidak ada garis merah di VS Code. Datanya fiktif, jadi tidak ada API key maupun data pribadi.
+##4. HTML Status dan Daftar
+Di body saya menambahkan tombol dengan id muat, paragraf dengan id pesan (role status), dan daftar dengan id daftar. Script main.js dipasang dengan defer. Saya cek ketiga selector lewat document.querySelector di Console dan semuanya mengembalikan elemen, bukan null, jadi id di HTML sudah cocok dengan main.js. Label tombol "Muat kegiatan" menurut saya sudah jelas karena menyebut aksi dan objeknya. Tampilan juga saya cek di mode device DevTools dan tidak ada scroll ke samping. Pada tahap ini pesan dan daftar masih kosong, sesuai harapan modul.
+##5. Fetch dengan Async
+Di main.js saya membuat fungsi async muat() yang memakai fetch, mengecek r.ok, membaca r.json(), dan dibungkus try/catch, lalu dipasang ke tombol lewat addEventListener. Saat tombol diklik, Console menampilkan Array(2) dan Network menunjukkan kegiatan.json berstatus 200.
+Untuk uji 404, saya ganti path menjadi ./data/hilang.json. Hasilnya halaman menampilkan "Gagal memuat", Console menampilkan HTTP 404, dan Network menunjukkan status 404. Setelah itu path saya kembalikan.
+Awalnya fetch tidak jalan karena halaman saya buka lewat file://. Setelah pindah ke Live Server (http://127.0.0.1:5500), fetch baru berhasil. Dari sini saya paham bahwa fetch tidak menganggap 404 sebagai kegagalan, jadi r.ok harus dicek sendiri dan throw dipakai supaya masuk ke catch.
+##6. Validasi dan Render
+Saya menambahkan Array.isArray(data), pengecekan typeof k.judul, dan render daftar memakai createElement serta textContent.
+Pada uji bentuk object, prediksi saya data akan ditolak. Isi kegiatan.json saya ganti jadi satu object, dan hasilnya halaman menampilkan "Gagal memuat" dengan pesan Data harus array di Console. Sesuai prediksi.
+Pada uji judul markup, prediksi saya judul tampil sebagai teks biasa. Saya ubah salah satu judul jadi "<b>HTML</b>", dan hasilnya tampil apa adanya, tidak menjadi huruf tebal. Sesuai prediksi.
+textContnt mengisi elemen dengan teks biasa, jadi tag HTML dari data tidak dijalankan dan hanya tampil sebagai tulisan. Kalau memakai innerHTML, tag akan diproses jadi elemen sungguhan, sehingga markup berbahaya dari data bisa ikut jalan. Karena itu textContent lebih aman untuk data dari luar. Setelah pengujian selesai, kegiatan.json saya kembalikan ke versi normal.
