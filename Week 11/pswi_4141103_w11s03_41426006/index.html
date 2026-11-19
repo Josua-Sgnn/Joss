@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kegiatan - Loading, Error, Empty, Timeout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Kegiatan</h1>
+  <label for="sumber">Sumber data (untuk pengujian)</label>
+  <select id="sumber">
+    <option value="./data/kegiatan.json">normal (kegiatan.json)</option>
+    <option value="./data/kosong.json">kosong (kosong.json)</option>
+    <option value="./data/rusak.json">JSON rusak (rusak.json)</option>
+    <option value="./data/salah-bentuk.json">salah bentuk (salah-bentuk.json)</option>
+    <option value="./data/tidak-ada.json">404 (tidak-ada.json)</option>
+  </select>
+  <button id="muat" type="button">Muat kegiatan</button>
+  <p id="pesan" role="status"></p>
+  <ul id="daftar"></ul>
+</main>
+<script src="main.js" defer></script>
+</body>
+</html>

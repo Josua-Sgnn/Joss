@@ -1,0 +1,8 @@
+body { font-family: system-ui, sans-serif; margin: 0; background: #f5f6f8; color: #1d2330; }
+main { max-width: 36rem; margin: 2rem auto; padding: 0 1rem; }
+label { display: block; margin-bottom: .25rem; font-size: .9rem; }
+select, button { font: inherit; padding: .5rem .75rem; margin-right: .5rem; }
+button:disabled { opacity: .6; cursor: not-allowed; }
+#pesan { min-height: 1.5rem; margin-top: 1rem; font-weight: 600; }
+#pesan.error { color: #a4161a; }
+ul { padding-left: 1.25rem; }
